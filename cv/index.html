@@ -1,55 +1,36 @@
+<!DOCTYPE html>
 <html>
-<head>
-<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
-</head>
-<body>
-<canvas id="the-canvas"></canvas>
-<script>
-var url = '/cv.pdf';
-
-// Disable workers to avoid yet another cross-origin issue (workers need
-// the URL of the script to be loaded, and dynamically loading a cross-origin
-// script does not work).
-// PDFJS.disableWorker = true;
-
-// The workerSrc property shall be specified.
-PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
-
-// Asynchronous download of PDF
-var loadingTask = PDFJS.getDocument(url);
-loadingTask.promise.then(function(pdf) {
-  console.log('PDF loaded');
-
-  // Fetch the first page
-  var pageNumber = 1;
-  pdf.getPage(pageNumber).then(function(page) {
-    console.log('Page loaded');
-
-    var scale = 1.5;
-    var viewport = page.getViewport(scale);
-
-    // Prepare canvas using PDF page dimensions
-    var canvas = document.getElementById('the-canvas');
-    var context = canvas.getContext('2d');
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-
-    // Render PDF page into canvas context
-    var renderContext = {
-      canvasContext: context,
-      viewport: viewport
-    };
-    var renderTask = page.render(renderContext);
-    renderTask.then(function () {
-        console.log('Page rendered');
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+      Effect of grain size on piezoelectric, ferroelectric and dielectric
+      properties of PMN-PT ceramics.
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2/build/pdf.min.js"></script>
+    <!-- <script src="main.js"></script> -->
+  </head>
+  <body>
+    <canvas id="my_canvas"></canvas>
+    <script>
+      let pdfHandle = pdfjsLib.getDocument("./cv.pdf");
+      pdfHandle.promise.then(pdf => {
+        // load pdf
+        console.log(pdf._pdfInfo.numPages);
+        pdf.getPage(2).then(page => {
+          var myCanvas = document.getElementById("my_canvas");
+          var context = myCanvas.getContext("2d");
+          var viewport = page.getViewport(2, 0); // getViewport(scale, angle)
+          myCanvas.width = viewport.width;
+          myCanvas.height = viewport.height;
+          page.render({
+            canvasContext: context,
+            viewport: viewport
+          });
+        });
       });
-  });
-}, function (reason) {
-  // PDF loading error
-  console.error(reason);
-});
-</script>
-</body>
-
-
+    </script>
+  </body>
 </html>
