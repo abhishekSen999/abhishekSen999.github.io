@@ -15,7 +15,7 @@
   <body>
     <canvas id="my_canvas"></canvas>
     <script>
-      let pdfHandle = pdfjsLib.getDocument("./cv.pdf");
+      let pdfHandle = pdfjsLib.getDocument("./cv/cv.pdf");
       pdfHandle.promise.then(pdf => {
         // load pdf
         console.log(pdf._pdfInfo.numPages);
