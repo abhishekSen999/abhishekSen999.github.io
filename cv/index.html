@@ -1,2 +1,13 @@
-<iframe frameborder="0" scrolling="no" style="border:0px" src="/cv.pdf" width="500" height=500>
-</iframe>
+<html>
+<head><script>
+var pdf = new PDFObject({
+  url: "/cv.pdf",
+  id: "pdfRendered",
+  pdfOpenParams: {
+    view: "FitH"
+  }
+}).embed("pdfRenderer");
+</script>
+</head>
+<div id="pdfRenderer"></div>
+</html>
