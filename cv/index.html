@@ -1,67 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-canvas {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 100%;
-}
-</style>
+ <title>Abhishek Sen | Resume</title> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
 
+   @media only screen and (max-width: 793px) {
+      /* for devices with width less than A4 paper */
+      .image{
 
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+         width:100% ;
+         height:auto;
 
+         display: block;
+         margin-left:0px;
+         margin-right: 0px;
+      }
+   }
+   @media only screen and (min-width: 794px) {
+      /* for devices with width more than A4 paper */
+      .image{
+         w: 793.92;
+         h: 1122.24;
+         width:var(w)px ; 
+         height: var(h)px;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+      }   
+   }
+
+ </style>
 </head>
-
-<body>
-<canvas id="the-canvas" ></canvas>
-<script>
-// If absolute URL from the remote server is provided, configure the CORS
-// header on that server.
-var url = './cv.pdf';
-
-// Loaded via <script> tag, create shortcut to access PDF.js exports.
-var pdfjsLib = window['pdfjs-dist/build/pdf'];
-
-// The workerSrc property shall be specified.
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
-
-// Asynchronous download of PDF
-var loadingTask = pdfjsLib.getDocument(url);
-loadingTask.promise.then(function(pdf) {
-  console.log('PDF loaded');
+<body >
   
-  // Fetch the first page
-  var pageNumber = 1;
-  pdf.getPage(pageNumber).then(function(page) {
-    console.log('Page loaded');
-    
-    var scale = 1.5;
-    var viewport = page.getViewport({scale: scale});
+  <img src="CV_AbhishekSen.png" class="image" alt="resume" >
 
-    // Prepare canvas using PDF page dimensions
-    var canvas = document.getElementById('the-canvas');
-    var context = canvas.getContext('2d');
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-
-    // Render PDF page into canvas context
-    var renderContext = {
-      canvasContext: context,
-      viewport: viewport
-    };
-    var renderTask = page.render(renderContext);
-    renderTask.promise.then(function () {
-      console.log('Page rendered');
-    });
-  });
-}, function (reason) {
-  // PDF loading error
-  console.error(reason);
-});
-</script>
 </body>
 </html>
