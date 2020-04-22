@@ -312,7 +312,7 @@ class Background{
         this.circleArray=[];
         this.colorScheme={red:255,green:255,blue:255,brightness:0.2};
         this.closenessFactor=1.5;
-        this.numberOfLines=500;
+        this.numberOfLines=200;
         this.lineArray=[];
         this.lineSpeed=1//px
 
