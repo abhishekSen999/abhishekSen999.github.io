@@ -4,6 +4,27 @@
 <link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
  <title>Abhishek Sen</title> 
  <style type="text/css">
+    .container {
+        height: 200px;
+        position: relative;
+    }
+
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .belowCenter{
+        margin: 0;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
 
     canvas{
         border: 1px solid black;
@@ -19,9 +40,9 @@
         color: white;
         font-family: "Alex Brush";
         font-size: 100px;
-	    position: absolute;
-	    top: 40%;
-	    left: 34%
+	    /* position: absolute; */
+	    /* top: 40%; */
+	    /* left: 34% */
 	    
 	    
     }
@@ -30,9 +51,9 @@
 	    color: gray;
         font-family: "Alex Brush";
         font-size: 50px;
-	    position: absolute;
-	    top: 55%;
-	    left: 40%
+	    /* position: absolute; */
+	    /* top: 55%; */
+	    /* left: 40% */
     }
 
     /* Relevant hidden tags for Search Engine Optimization | tags can be verified in resume and other social media platforms */
@@ -46,11 +67,11 @@
  </style>
 </head>
 <body>
-  
-  <myname>Abhishek Sen.</myname>
-  <mylink>Check out my resume <a href=https://www.sen.codes/resume>here</a>.</mylink>
-  <hiddenTags>| Abhishek Sen | DUCS | Computer Science | Department of Computer Science | Delhi University | Kolkata | New Delhi | abhisheksen.me | ISH | International Students House President 2019-2020 | Masters in Computer Science | MSc |</hiddenTags>
-  
+    <div>
+        <myname class="center">Abhishek Sen.</myname>
+        <mylink class="belowCenter">Check out my resume <a href=https://www.sen.codes/resume>here</a>.</mylink>
+        <hiddenTags>| Software Engineer | abhishek | Abhishek Sen | DUCS | Computer Science | Department of Computer Science | Delhi University | Kolkata | New Delhi | abhisheksen.me | sen.codes | ISH | International Students House President 2019-2020 | Masters in Computer Science | MSc |</hiddenTags>
+    </div>  
   <canvas id='canvas' width=100% height=100%></canvas>
   <script src="dotCanvas.js"></script>
   
